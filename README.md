@@ -2,7 +2,7 @@
 
 Learn English by recording 10 words per day and getting daily AI-generated conversations based on your words.
 
-![App Screenshot](path/to/your/screenshot.png)
+<img src="/reflex.png" width="659" height="672">
 
 ## Features
 
