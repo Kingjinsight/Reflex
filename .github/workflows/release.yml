@@ -1,0 +1,61 @@
+# .github/workflows/release.yml
+
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*' # This workflow runs when you push a tag like v1.0.0
+
+jobs:
+  release:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # Use a Long-Term Support version of Node.js
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build/package Electron app
+        run: npm run dist
+        env:
+          # This token is automatically provided by GitHub Actions
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: dist/*.AppImage # Adjust if your output file name is different
+          asset_name: Reflex-Linux.AppImage
+          asset_content_type: application/octet-stream
+        if: matrix.os == 'ubuntu-latest'
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: dist/*.exe # Adjust if your output file name is different
+          asset_name: Reflex-Setup.exe
+          asset_content_type: application/octet-stream
+        if: matrix.os == 'windows-latest'
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: dist/*.dmg # Adjust if your output file name is different
+          asset_name: Reflex-macOS.dmg
+          asset_content_type: application/octet-stream
+        if: matrix.os == 'macos-latest'
