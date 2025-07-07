@@ -14,7 +14,7 @@ Learn English by recording 10 words per day and getting daily AI-generated conve
 
 ## Installation
 
-1.  Go to the [**Releases**](https://github.com/your-username/your-repo/releases) page.
+1.  Go to the [**Releases**](https://github.com/kingjinsight/Reflex/releases) page.
 2.  Download the latest installer for your operating system (`.dmg` for macOS, `.exe` for Windows, `.AppImage` for Linux).
 3.  Run the installer.
 
