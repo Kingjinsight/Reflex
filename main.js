@@ -1,17 +1,12 @@
-// main.js
-
-// Modules to control application life and create native browser window
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const fetch = require('node-fetch'); // For Gemini API calls
 const { translate } = require('@vitalets/google-translate-api');
 
-// Store will be initialized asynchronously
 let store;
 let mainWindow;
 
 function createWindow() {
-    // Create the browser window.
     mainWindow = new BrowserWindow({
         width: 1200,
         height: 800,
@@ -22,15 +17,12 @@ function createWindow() {
         }
     });
 
-    // and load the index.html of the app.
     mainWindow.loadFile('index.html');
 }
 
 app.whenReady().then(async () => {
-    // FIX: Dynamically import electron-store
     const { default: Store } = await import('electron-store');
     
-    // Initialize electron-store after it has been imported
     store = new Store({
         defaults: {
             dailyWords: {
@@ -51,9 +43,8 @@ app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit();
 });
 
-// --- Word Storage Logic ---
 function getTodayDateString() {
-    return new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+    return new Date().toISOString().split('T')[0];
 }
 
 ipcMain.handle('add-word', (event, word) => {
@@ -61,33 +52,28 @@ ipcMain.handle('add-word', (event, word) => {
     const dailyData = store.get('dailyWords');
     const allTimeWords = store.get('allTimeWords');
 
-    // Check if the date has changed; if so, reset the daily words
     if (dailyData.date !== todayStr) {
         dailyData.date = todayStr;
         dailyData.words = [];
         console.log('New day detected. Daily words have been reset.');
     }
 
-    // Add to daily words if not already present
     if (!dailyData.words.includes(word)) {
         dailyData.words.push(word);
         if (dailyData.words.length > 10) dailyData.words.shift();
         console.log(`Added "${word}" to daily list.`);
     }
 
-    // Add to all-time history if not already present
     if (!allTimeWords.includes(word)) {
         allTimeWords.push(word);
         console.log(`Added "${word}" to all-time history.`);
     }
 
-    // Save back to the store
     store.set('dailyWords', dailyData);
     store.set('allTimeWords', allTimeWords);
 });
 
 ipcMain.handle('get-words', () => {
-    // Also check date when retrieving words, just in case
     const todayStr = getTodayDateString();
     const dailyData = store.get('dailyWords');
     if (dailyData.date !== todayStr) {
