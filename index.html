@@ -11,18 +11,18 @@
         .prose strong { color: #4f46e5; }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
-    <div id="history-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-        <div class="relative top-20 mx-auto p-5 border w-full max-w-md shadow-lg rounded-md bg-white">
+<body class="bg-black text-gray-300">
+    <div id="history-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 overflow-y-auto h-full w-full z-50">
+        <div class="relative top-20 mx-auto p-5 border border-gray-700 w-full max-w-md shadow-lg rounded-md bg-gray-800">
             <div class="mt-3">
                 <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-lg leading-6 font-medium text-gray-900">Word History</h3>
-                    <button id="close-history-btn" class="text-gray-400 hover:text-gray-600">&times;</button>
+                    <h3 class="text-lg leading-6 font-medium text-white">Word History</h3>
+                    <button id="close-history-btn" class="text-gray-400 hover:text-white">&times;</button>
                 </div>
-                <div id="history-list" class="mt-2 text-left h-64 overflow-y-auto border-t border-b py-2">
+                <div id="history-list" class="mt-2 text-left h-64 overflow-y-auto border-t border-b border-gray-700 py-2">
                 </div>
                 <div class="items-center px-4 py-3">
-                    <button id="close-history-btn-bottom" class="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-600">
+                    <button id="close-history-btn-bottom" class="px-4 py-2 bg-gray-700 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-600">
                         Close
                     </button>
                 </div>
@@ -32,79 +32,79 @@
 
     <div class="container mx-auto p-4 md:p-8 max-w-4xl">
         <header class="text-center mb-8">
-            <h1 class="text-4xl font-bold text-indigo-600">Reflex</h1>
-            <p class="text-gray-500 mt-2">Your AI-powered English learning companion</p>
+            <h1 class="text-4xl font-bold text-white">Reflex</h1>
+            <p class="text-gray-400 mt-2">Your AI-powered English learning companion</p>
         </header>
 
         <!-- API Key Settings -->
-        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
-            <h2 class="text-xl font-semibold mb-4">Settings</h2>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-xl font-semibold mb-4 text-white">Settings</h2>
             <div class="flex items-end space-x-4">
                 <div class="flex-grow">
-                    <label for="api-key-input" class="block text-sm font-medium text-gray-700">Gemini API Key</label>
-                    <input type="password" id="api-key-input" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="Enter your Gemini API key here">
+                    <label for="api-key-input" class="block text-sm font-medium text-gray-300">Gemini API Key</label>
+                    <input type="password" id="api-key-input" class="mt-1 block w-full p-2 border border-gray-600 rounded-md shadow-sm bg-gray-700 text-white" placeholder="Enter your Gemini API key here">
                 </div>
-                <button id="save-key-btn" class="bg-indigo-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-indigo-700">Save Key</button>
+                <button id="save-key-btn" class="bg-gray-700 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-600">Save Key</button>
             </div>
             <div id="key-status" class="text-sm mt-2 h-5"></div>
         </div>
 
         <main class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="md:col-span-2 bg-white p-6 rounded-lg shadow-md">
-                <h2 class="text-2xl font-semibold mb-4">Translator</h2>
+            <div class="md:col-span-2 bg-gray-800 p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold mb-4 text-white">Translator</h2>
                 <div class="mb-4">
-                    <label for="translation-style" class="block text-sm font-medium text-gray-700 mb-2">Translation Style:</label>
-                    <select id="translation-style" name="translation-style" class="w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                    <label for="translation-style" class="block text-sm font-medium text-gray-300 mb-2">Translation Style:</label>
+                    <select id="translation-style" name="translation-style" class="w-full p-2 border border-gray-600 rounded-md shadow-sm bg-gray-700 text-white">
                         <option value="ai_model">Gemini Model translation</option>
                         <option value="dictionary">Traditional translation</option>
                     </select>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <div>
-                        <label for="source-lang" class="block text-sm font-medium text-gray-700">From:</label>
-                        <select id="source-lang" name="source-lang" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"></select>
+                        <label for="source-lang" class="block text-sm font-medium text-gray-300">From:</label>
+                        <select id="source-lang" name="source-lang" class="mt-1 block w-full p-2 border border-gray-600 rounded-md shadow-sm bg-gray-700 text-white"></select>
                     </div>
                     <div>
-                        <label for="target-lang" class="block text-sm font-medium text-gray-700">To:</label>
-                        <select id="target-lang" name="target-lang" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"></select>
+                        <label for="target-lang" class="block text-sm font-medium text-gray-300">To:</label>
+                        <select id="target-lang" name="target-lang" class="mt-1 block w-full p-2 border border-gray-600 rounded-md shadow-sm bg-gray-700 text-white"></select>
                     </div>
                 </div>
                 <div class="grid grid-cols-1 gap-4">
                     <div>
-                        <label for="text-to-translate" class="block text-sm font-medium text-gray-700">Enter text:</label>
-                        <textarea id="text-to-translate" name="text-to-translate" rows="4" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="Type or paste text here..."></textarea>
+                        <label for="text-to-translate" class="block text-sm font-medium text-gray-300">Enter text:</label>
+                        <textarea id="text-to-translate" name="text-to-translate" rows="4" class="mt-1 block w-full p-2 border border-gray-600 rounded-md shadow-sm bg-gray-700 text-white" placeholder="Type or paste text here..."></textarea>
                     </div>
                     <div class="text-center">
-                        <button id="translate-btn" class="bg-indigo-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-indigo-700">Translate</button>
+                        <button id="translate-btn" class="bg-gray-700 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-600">Translate</button>
                     </div>
                     <div>
-                        <label for="translated-text" class="block text-sm font-medium text-gray-700">Translation:</label>
-                        <div class="mt-1 block w-full p-2 border border-gray-300 rounded-md bg-gray-50 h-28 overflow-y-auto">
-                            <div id="translation-placeholder" class="text-gray-400">Your translation will appear here...</div>
+                        <label for="translated-text" class="block text-sm font-medium text-gray-300">Translation:</label>
+                        <div class="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 h-28 overflow-y-auto">
+                            <div id="translation-placeholder" class="text-gray-500">Your translation will appear here...</div>
                             <div id="translation-output" class="hidden whitespace-pre-wrap"></div>
-                            <div id="translation-loader" class="hidden"><div class="flex justify-center items-center h-full"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div></div></div>
+                            <div id="translation-loader" class="hidden"><div class="flex justify-center items-center h-full"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div></div></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white p-6 rounded-lg shadow-md flex flex-col">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-md flex flex-col">
                 <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-2xl font-semibold">Today's Story</h2>
-                    <button id="show-history-btn" class="text-sm bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-1 px-3 rounded-lg">History</button>
+                    <h2 class="text-2xl font-semibold text-white">Today's Story</h2>
+                    <button id="show-history-btn" class="text-sm bg-gray-700 hover:bg-gray-600 text-white font-semibold py-1 px-3 rounded-lg">History</button>
                 </div>
                 <!-- Daily Goal Tracker -->
                 <div id="daily-goal-tracker" class="mb-4 text-center">
-                    <p class="text-sm text-gray-600">Daily Goal</p>
-                    <p id="daily-goal-count" class="text-2xl font-bold text-indigo-600">0 / 10</p>
+                    <p class="text-sm text-gray-400">Daily Goal</p>
+                    <p id="daily-goal-count" class="text-2xl font-bold text-white">0 / 10</p>
                 </div>
                 <div id="story-container" class="space-y-4 flex-grow">
-                     <div id="story-placeholder" class="text-center text-gray-400 h-full flex flex-col justify-center items-center"><p>Search for English words to generate a story!</p></div>
-                    <div id="story-loader" class="hidden"><div class="flex justify-center items-center h-full"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div></div></div>
+                     <div id="story-placeholder" class="text-center text-gray-500 h-full flex flex-col justify-center items-center"><p>Search for English words to generate a story!</p></div>
+                    <div id="story-loader" class="hidden"><div class="flex justify-center items-center h-full"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div></div></div>
                     <div id="story-content" class="hidden prose max-w-none"></div>
                 </div>
                  <div class="text-center mt-4">
-                    <button id="generate-story-btn" class="bg-green-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-600">Generate Story</button>
+                    <button id="generate-story-btn" class="bg-gray-700 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-600">Generate Story</button>
                 </div>
             </div>
         </main>
@@ -163,7 +163,7 @@
             if (savedKey) {
                 apiKeyInput.value = savedKey;
                 keyStatus.textContent = 'API Key loaded from storage.';
-                keyStatus.className = 'text-sm mt-2 h-5 text-green-600';
+                keyStatus.className = 'text-sm mt-2 h-5 text-green-500';
             }
         }
 
@@ -172,11 +172,11 @@
             if (key) {
                 localStorage.setItem(API_KEY_STORAGE_KEY, key);
                 keyStatus.textContent = 'API Key saved successfully!';
-                keyStatus.className = 'text-sm mt-2 h-5 text-green-600';
+                keyStatus.className = 'text-sm mt-2 h-5 text-green-500';
             } else {
                 localStorage.removeItem(API_KEY_STORAGE_KEY);
                 keyStatus.textContent = 'API Key removed.';
-                keyStatus.className = 'text-sm mt-2 h-5 text-yellow-600';
+                keyStatus.className = 'text-sm mt-2 h-5 text-yellow-500';
             }
             setTimeout(() => keyStatus.textContent = '', 3000);
         }
@@ -273,7 +273,7 @@
                 allTimeWords.forEach(word => {
                     const div = document.createElement('div');
                     div.textContent = word;
-                    div.className = 'p-2 border-b';
+                    div.className = 'p-2 border-b border-gray-700';
                     historyList.appendChild(div);
                 });
             }
